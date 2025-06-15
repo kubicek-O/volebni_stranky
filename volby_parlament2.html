@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Oskar Kubíček - Kandidát #2</title>
+    <meta name="description" content="Oficiální stránka kandidáta Oskara Kubíčka do třídního parlamentu. Kandidát číslo 2.">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #e0f0ff 0%, #a1c4fd 100%);
+            margin: 0;
+            color: #003366;
+        }
+        header {
+            background: #003366;
+            color: white;
+            padding: 40px 20px 60px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+        header h1 {
+            font-size: 3.2rem;
+            margin: 0;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            text-shadow: 2px 2px 5px #001f4d;
+        }
+        header .slogan {
+            font-size: 1.6rem;
+            font-style: italic;
+            margin-top: 15px;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+        }
+        .number {
+            font-size: 5rem;
+            font-weight: 900;
+            color: #ffcc00;
+            margin-top: 25px;
+            text-shadow: 2px 2px 7px #997700;
+        }
+        nav {
+            background: #002244;
+            text-align: center;
+            padding: 10px;
+        }
+        nav a {
+            color: #ffcc00;
+            margin: 0 15px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: #ffffff;
+        }
+        main {
+            max-width: 900px;
+            background: white;
+            margin: -60px auto 40px;
+            padding: 40px 40px 60px;
+            border-radius: 20px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        main h2 {
+            color: #003366;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            text-align: center;
+            letter-spacing: 0.1em;
+        }
+        .intro-text {
+            font-size: 1.2rem;
+            color: #004080;
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            line-height: 1.6;
+        }
+        .points {
+            list-style: none;
+            padding: 0;
+            font-size: 1.4rem;
+            color: #004080;
+            max-width: 650px;
+            margin: 0 auto 40px;
+        }
+        .points li {
+            background: #f0f8ff;
+            margin: 12px 0;
+            padding: 15px 20px;
+            border-left: 8px solid #003366;
+            border-radius: 8px;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+            transition: background 0.3s;
+        }
+        .points li:hover {
+            background: #d0e4ff;
+        }
+        .reflection-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin: 30px auto 0;
+        }
+        .reflection-link {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #3399ff;
+            text-align: center;
+            text-decoration: none;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            text-shadow:
+                0 0 5px #66a3ff,
+                0 0 10px #66a3ff;
+            border: 2px solid #3399ff;
+            padding: 15px 25px;
+            border-radius: 8px;
+            user-select: none;
+            transition: color 0.3s ease, border-color 0.3s ease, text-shadow 0.3s ease, transform 0.2s ease;
+        }
+        .reflection-link:hover {
+            color: #003366;
+            text-shadow:
+                0 0 10px #003366,
+                0 0 15px #001f4d;
+            border-color: #003366;
+            cursor: pointer;
+            transform: scale(1.05);
+        }
+        .cta-text {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #cc0000;
+            animation: pulseRed 1.5s infinite;
+        }
+        @keyframes pulseRed {
+            0% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.05); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+        footer {
+            background: #003366;
+            color: white;
+            text-align: center;
+            padding: 18px 0;
+            font-size: 14px;
+            letter-spacing: 0.05em;
+            font-weight: 600;
+            position: relative;
+        }
+        .plakat {
+      position: absolute;
+      top: 70px;
+      right: 50px;
+      max-width: 10%;
+      height: auto;
+      border-radius: 20px;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .plakat {
+      max-width: 13%;
+      height: auto;
+      border-radius: 20px;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Oskar Kubíček</h1>
+        <div class="slogan">Ne sliby, ale činy – Kubíček to zařídí</div>
+        <div class="number">#2</div>
+        <img src="oskar_volby-removebg-preview.png" alt="Volební plakát Oskar Kubíček" class="plakat" />
+    </header>
+
+    <nav>
+        <a href="volby_parlament2.html">Domů</a>
+        <a href="volby_parlament4.html">Proč mě volit</a>
+        <a href="volby_parlament3.html">Plakát</a>
+        <a href="volby_parlament5.html">Můj plán</a>
+    </nav>
+
+    <main>
+        <h2>Co vám mohu nabídnout jako zástupce?</h2>
+        <div class="intro-text">
+            Chci být vaším hlasem ve třídě. Budu naslouchat, pomáhat a společně se postaráme o to, aby naše třída byla co nejlepším místem pro každého z nás.
+        </div>
+
+        <ul class="points">
+            <li>Vždy naslouchám názorům třídy a prosazuji je</li>
+            <li>Pomůžu zlepšit atmosféru a vztahy ve třídě</li>
+            <li>Budu férovým a spolehlivým zástupcem pro každého</li>
+        </ul>
+
+        <div class="reflection-links">
+            <a href="volby_parlament4.html" class="reflection-link">Co slíbím, to splním</a>
+            <a href="volby_parlament3.html" class="reflection-link">Volební plakát</a>
+        </div>
+
+        <div class="cta-text">Podpoř mě svým hlasem – Každý hlas se počítá!</div>
+    </main>
+    <footer>
+        Vol #2 – Oskar Kubíček | Děkuji za vaši důvěru
+    </footer>
+</body>
+</html>
