@@ -13,15 +13,16 @@
     .tagline{font-size:1.2rem;margin-top:8px;font-style:italic;color:#ffda44}
     nav{background:#072652;display:flex;justify-content:center;gap:10px;padding:10px;position:sticky;top:0;z-index:50}
     .nav-btn{border:2px solid #fff;background:transparent;color:#fff;font-weight:700;padding:8px 14px;border-radius:12px;cursor:pointer;transition:.2s}
+    .nav-btn:hover{transform:translateY(-1px);background:rgba(255,255,255,.08)}
     .nav-btn.active{background:#fff;color:#072652}
     main{max-width:1000px;margin:-40px auto 40px;background:#fff;border-radius:16px;padding:24px;box-shadow:0 6px 20px rgba(0,0,0,.15)}
     .section-title{text-align:center;font-size:1.9rem;color:#0a3069;position:relative;margin:20px 0 16px}
     .section-title:after{content:'';display:block;width:70px;height:3px;background:linear-gradient(90deg,var(--accent),#ffd95e);margin:8px auto;border-radius:2px}
     .lead{font-size:1.15rem;line-height:1.6;color:#0f4d91;max-width:850px;margin:0 auto 24px;text-align:center}
     .cards{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));margin:20px 0}
-    .card{background:#f9fbff;border:1px solid #dde6ff;border-radius:12px;padding:16px;box-shadow:0 3px 8px rgba(0,0,0,.08);transition:.2s}
+    .card{background:#f9fbff;border:1px solid #dde6ff;border-radius:12px;padding:16px;box-shadow:0 3px 8px rgba(0,0,0,.08);transition:.15s ease}
     .card:hover{transform:translateY(-2px);box-shadow:0 6px 14px rgba(0,0,0,.12)}
-    .poster{display:block;margin:20px auto;border-radius:12px;box-shadow:0 4px 14px rgba(0,0,0,.15);max-width:90%;height:auto}
+    .poster{display:block;margin:20px auto;border-radius:16px;box-shadow:0 4px 16px rgba(0,0,0,.25);max-width:95%;height:auto}
     footer{background:var(--blue);color:#fff;text-align:center;padding:16px;font-weight:700;border-radius:0 0 16px 16px}
   </style>
 </head>
@@ -31,7 +32,7 @@
     <div class="tagline">Kandidát na předsedu školního parlamentu – Ne sliby, ale činy!</div>
   </header>
 
-  <nav>
+  <nav aria-label="Hlavní navigace">
     <button class="nav-btn" data-route="uvod">Úvod</button>
     <button class="nav-btn" data-route="omne">O mně</button>
     <button class="nav-btn" data-route="plakat">Plakát</button>
@@ -64,7 +65,7 @@
   <template id="tpl-omne">
     <section>
       <h2 class="section-title">O mně</h2>
-      <p class="lead">Ahoj! Jmenuji se <strong>Oskar Kubíček</strong> a na naši školu chodím už <strong>10 let</strong>. Na Korunku mě baví chodit s úsměvem – znám se s vámi, bavíme se spolu a chci, aby se každý cítil dobře.</p>
+      <p class="lead">Ahoj! Jmenuji se <strong>Oskar Kubíček</strong> a na naši školu chodím už <strong>10 let</strong>. Na Korunku chodím rád a s úsměvem. S většinou z vás jsem se už bavil a chci, aby se u nás ve škole každý cítil dobře.</p>
       <div class="cards">
         <article class="card"><h3>Kdo jsem</h3><p>Otevřený a férový. Umím spojovat lidi a řešit věci v klidu.</p></article>
         <article class="card"><h3>Co mě baví</h3><p>Technologie, weby a projekty, které mají smysl. Organizace a dobrá komunikace.</p></article>
@@ -75,10 +76,8 @@
 
   <template id="tpl-plakat">
     <section>
-      <h2 class="section-title">Volební plakát</h2>
-      <p class="lead">Zde je můj oficiální volební plakát pro kandidaturu na předsedu školního parlamentu.</p>
+      <!-- POUZE plakát, bez dalších textů -->
       <img class="poster" src="https://raw.githubusercontent.com/kubicek-O/volebni_stranky/main/volebni-plakat.png" alt="Volební plakát Oskar Kubíček" />
-      <p class="lead"><strong>Ne sliby, ale činy – Kubíček to zařídí!</strong></p>
     </section>
   </template>
 
@@ -126,6 +125,7 @@
 
   <script>
     (function(){
+      // Dynamické načítání podstránek. Pokud soubor chybí, použije se fallback šablona.
       const routes = { uvod:'uvod.html', omne:'omne.html', plakat:'plakat.html', sliby:'sliby.html', plan:'plan.html', kontakt:'kontakt.html' };
       const cache = new Map();
       const contentEl = document.getElementById('content');
@@ -133,7 +133,6 @@
 
       function setActive(route){ buttons.forEach(b=>b.classList.toggle('active', b.dataset.route===route)); }
       function showLoading(){ contentEl.innerHTML='<p style="text-align:center;padding:20px;">Načítám obsah…</p>'; }
-
       function fallbackFromTemplate(route){ const tpl=document.getElementById('tpl-'+route); if(tpl){ contentEl.innerHTML=tpl.innerHTML; return true;} return false; }
 
       async function loadRoute(route){
@@ -156,4 +155,3 @@
   </script>
 </body>
 </html>
-
