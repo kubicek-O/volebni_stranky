@@ -4,17 +4,34 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Oskar Kubíček – kandidát na předsedu školního parlamentu</title>
-  <meta name="description" content="Oficiální stránka Oskara Kubíčka, kandidáta na předsedu školního parlamentu.">
+  <meta name="description" content="Oficiální stránka Oskara Kubíčka, kandidáta na předsedu školního parlamentu. Ne sliby, ale činy – zápisy do 48 h, online nástěnka, první změna do 30 dnů." />
+
+  <!-- Open Graph / Twitter for hezké sdílení -->
+  <meta property="og:title" content="Oskar Kubíček – kandidát na předsedu školního parlamentu" />
+  <meta property="og:description" content="Ne sliby, ale činy. Zápisy do 48 h, online nástěnka, první změna do 30 dnů." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://raw.githubusercontent.com/kubicek-O/volebni_stranky/main/volebni-plakat.png" />
+  <meta property="og:url" content="https://kubicek-o.github.io/volebni_stranky/parlament.html" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="theme-color" content="#0a3069" />
+
   <style>
     :root{ --blue:#0a3069; --accent:#ffcc00; --bg1:#eaf3ff; --bg2:#c9dcff; --text:#0a3069; }
+    *{box-sizing:border-box}
     body{font-family:'Segoe UI',Tahoma,Arial,sans-serif;margin:0;background:linear-gradient(135deg,var(--bg1),var(--bg2));color:var(--text)}
     header{background:var(--blue);color:#fff;text-align:center;padding:40px 16px 60px;box-shadow:0 4px 14px rgba(0,0,0,.25)}
     h1{margin:0;font-size:2.8rem;letter-spacing:.06em;text-transform:uppercase}
     .tagline{font-size:1.2rem;margin-top:8px;font-style:italic;color:#ffda44}
+
+    /* Skip link pro klávesnici */
+    .skip-link{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
+    .skip-link:focus{left:16px;top:16px;width:auto;height:auto;background:#fff;color:#000;padding:8px 12px;border-radius:8px;z-index:999}
+
     nav{background:#072652;display:flex;justify-content:center;gap:10px;padding:10px;position:sticky;top:0;z-index:50}
-    .nav-btn{border:2px solid #fff;background:transparent;color:#fff;font-weight:700;padding:8px 14px;border-radius:12px;cursor:pointer;transition:.2s}
+    .nav-btn{display:inline-block;border:2px solid #fff;background:transparent;color:#fff;font-weight:700;padding:8px 14px;border-radius:12px;cursor:pointer;transition:.2s;text-decoration:none}
     .nav-btn:hover{transform:translateY(-1px);background:rgba(255,255,255,.08)}
-    .nav-btn.active{background:#fff;color:#072652}
+    .nav-btn.active,[aria-current="page"]{background:#fff;color:#072652}
+
     main{max-width:1000px;margin:-40px auto 40px;background:#fff;border-radius:16px;padding:24px;box-shadow:0 6px 20px rgba(0,0,0,.15)}
     .section-title{text-align:center;font-size:1.9rem;color:#0a3069;position:relative;margin:20px 0 16px}
     .section-title:after{content:'';display:block;width:70px;height:3px;background:linear-gradient(90deg,var(--accent),#ffd95e);margin:8px auto;border-radius:2px}
@@ -24,25 +41,40 @@
     .card:hover{transform:translateY(-2px);box-shadow:0 6px 14px rgba(0,0,0,.12)}
     .poster{display:block;margin:20px auto;border-radius:16px;box-shadow:0 4px 16px rgba(0,0,0,.25);max-width:95%;height:auto}
     footer{background:var(--blue);color:#fff;text-align:center;padding:16px;font-weight:700;border-radius:0 0 16px 16px}
+
+    @media (prefers-reduced-motion: reduce){ *{animation:none !important; transition:none !important;} }
   </style>
 </head>
 <body>
+  <a href="#content" class="skip-link">Přeskočit na obsah</a>
+
   <header>
     <h1>Oskar Kubíček</h1>
     <div class="tagline">Kandidát na předsedu školního parlamentu – Ne sliby, ale činy!</div>
   </header>
 
-  <nav aria-label="Hlavní navigace">
-    <button class="nav-btn" data-route="uvod">Úvod</button>
-    <button class="nav-btn" data-route="omne">O mně</button>
-    <button class="nav-btn" data-route="plakat">Plakát</button>
-    <button class="nav-btn" data-route="sliby">Volební sliby</button>
-    <button class="nav-btn" data-route="plan">Můj plán</button>
-    <button class="nav-btn" data-route="kontakt">Kontakt</button>
+  <nav aria-label="Hlavní navigace" role="navigation">
+    <a class="nav-btn" href="#/uvod" data-route="uvod">Úvod</a>
+    <a class="nav-btn" href="#/omne" data-route="omne">O mně</a>
+    <a class="nav-btn" href="#/plakat" data-route="plakat">Plakát</a>
+    <a class="nav-btn" href="#/sliby" data-route="sliby">Volební sliby</a>
+    <a class="nav-btn" href="#/plan" data-route="plan">Můj plán</a>
+    <a class="nav-btn" href="#/kontakt" data-route="kontakt">Kontakt</a>
   </nav>
 
   <main>
     <div id="content"></div>
+    <noscript>
+      <section style="padding:16px;background:#fff0e0;border-radius:12px;">
+        <h2>Obsah</h2>
+        <p>Vypadá to, že máš vypnutý JavaScript. Zde je rychlý přehled:</p>
+        <ul>
+          <li><strong>Ne sliby, ale činy</strong> – zápisy do 48 h, online nástěnka, první změna do 30 dnů.</li>
+          <li><strong>Plán 30/60/90</strong> – Komunikace, Prostředí, Zapojení.</li>
+          <li><strong>Kontakt</strong> – O přestávkách na chodbě nebo e‑mailem.</li>
+        </ul>
+      </section>
+    </noscript>
   </main>
 
   <footer>
@@ -58,6 +90,14 @@
         <article class="card"><h3>Proč kandiduji</h3><p>Chci z parlamentu udělat místo, kde se nápady proměňují v hotové věci.</p></article>
         <article class="card"><h3>Co nabízím</h3><p>Naslouchání, transparentnost a dotahování věcí do konce.</p></article>
         <article class="card"><h3>Slogan</h3><p><strong>Ne sliby, ale činy — Kubíček to zařídí.</strong></p></article>
+      </div>
+      <div class="card">
+        <h3>Co už jsem zařídil</h3>
+        <ul>
+          <li>Domluvený pilot <strong>tematického dne</strong> s vedením.</li>
+          <li>Návrh formátu <strong>zápisů ŠP</strong> (téma → rozhodnutí → úkoly).</li>
+          <li>Připravený design <strong>online nástěnky</strong> – ukázka na vyžádání.</li>
+        </ul>
       </div>
     </section>
   </template>
@@ -77,7 +117,7 @@
   <template id="tpl-plakat">
     <section>
       <!-- POUZE plakát, bez dalších textů -->
-      <img class="poster" src="https://raw.githubusercontent.com/kubicek-O/volebni_stranky/main/volebni-plakat.png" alt="Volební plakát Oskar Kubíček" />
+      <img class="poster" src="https://raw.githubusercontent.com/kubicek-O/volebni_stranky/main/volebni-plakat.png" alt="Volební plakát Oskar Kubíček" loading="lazy" width="1200" height="1700" />
     </section>
   </template>
 
@@ -86,7 +126,7 @@
       <h2 class="section-title">Volební sliby</h2>
       <p class="lead">Sliby beru jako <strong>závazky</strong>. Tohle jsou moje priority po zvolení předsedou ŠP.</p>
       <div class="cards">
-        <article class="card"><h3>Transparentnost</h3><p>Po každé schůzce jasné shrnutí pro třídy do 48 hodin.</p></article>
+        <article class="card"><h3>Transparentnost</h3><p>Po každé schůzce jasné shrnutí pro třídy do 48 hodin (rozhodnutí / úkol / odpovědnost / termín).</p></article>
         <article class="card"><h3>Online nástěnka</h3><p>Veřejný přehled úkolů: navrženo → v řešení → hotovo.</p></article>
         <article class="card"><h3>První změna do 30 dnů</h3><p>Viditelný krok, který pocítí všichni (malé, ale konkrétní zlepšení).</p></article>
       </div>
@@ -118,7 +158,7 @@
       <div class="cards">
         <article class="card"><h3>Osobně</h3><p>O přestávkách na chodbě – stačí mě zastavit.</p></article>
         <article class="card"><h3>Přes zástupce</h3><p>Dej návrh svému třídnímu zástupci do ŠP – dostane odpověď.</p></article>
-        <article class="card"><h3>Brzy online</h3><p>Propojení s online nástěnkou rozhodnutí a úkolů.</p></article>
+        <article class="card"><h3>Napiš mi</h3><p><a href="mailto:oskar.kubicek@example.com">oskar.kubicek@example.com</a> (nahraď vlastním e‑mailem)</p></article>
       </div>
     </section>
   </template>
@@ -129,9 +169,15 @@
       const routes = { uvod:'uvod.html', omne:'omne.html', plakat:'plakat.html', sliby:'sliby.html', plan:'plan.html', kontakt:'kontakt.html' };
       const cache = new Map();
       const contentEl = document.getElementById('content');
-      const buttons = Array.from(document.querySelectorAll('.nav-btn'));
 
-      function setActive(route){ buttons.forEach(b=>b.classList.toggle('active', b.dataset.route===route)); }
+      function setActive(route){
+        document.querySelectorAll('.nav-btn').forEach(a=>{
+          const active = a.dataset.route===route;
+          a.classList.toggle('active', active);
+          if(active){ a.setAttribute('aria-current','page'); }
+          else{ a.removeAttribute('aria-current'); }
+        });
+      }
       function showLoading(){ contentEl.innerHTML='<p style="text-align:center;padding:20px;">Načítám obsah…</p>'; }
       function fallbackFromTemplate(route){ const tpl=document.getElementById('tpl-'+route); if(tpl){ contentEl.innerHTML=tpl.innerHTML; return true;} return false; }
 
@@ -149,7 +195,10 @@
 
       function currentFromHash(){ const m=location.hash.match(/^#\/?(uvod|omne|plakat|sliby|plan|kontakt)$/); return m?m[1]:'uvod'; }
       window.addEventListener('hashchange',()=>loadRoute(currentFromHash()));
-      buttons.forEach(btn=>btn.addEventListener('click',()=>{const r=btn.dataset.route;if(location.hash!=='#/'+r){location.hash='#/'+r;}else{loadRoute(r);}}));
+      document.querySelectorAll('.nav-btn').forEach(link=>link.addEventListener('click',()=>{
+        const r=link.dataset.route;
+        if(location.hash!=='#/'+r){location.hash='#/'+r;}else{loadRoute(r);} // klik na aktivní odkaz refreshne obsah
+      }));
       loadRoute(currentFromHash());
     })();
   </script>
