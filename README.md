@@ -1,1 +1,1 @@
-# volebni_stranky
+# volebni_stranka
