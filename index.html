@@ -4,11 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Oskar Kubíček – kandidát na předsedu školního parlamentu</title>
-  <meta name="description" content="Oficiální stránka Oskara Kubíčka, kandidáta na předsedu školního parlamentu. Ne sliby, ale činy – zápisy do 48 h, online nástěnka, první změna do 30 dnů." />
+  <meta name="description" content="Oficiální stránka Oskara Kubíčka, kandidáta na předsedu školního parlamentu. Ne sliby, ale činy – zápisy do 48 h, online nástěnka a první viditelná změna do 30 dnů." />
 
-  <!-- Open Graph / Twitter for hezké sdílení -->
+  <!-- Open Graph / Twitter -->
   <meta property="og:title" content="Oskar Kubíček – kandidát na předsedu školního parlamentu" />
-  <meta property="og:description" content="Ne sliby, ale činy. Zápisy do 48 h, online nástěnka, první změna do 30 dnů." />
+  <meta property="og:description" content="Ne sliby, ale činy. Zápisy do 48 h, online nástěnka a první viditelná změna do 30 dnů." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="https://raw.githubusercontent.com/kubicek-O/volebni_stranky/main/volebni-plakat.png" />
   <meta property="og:url" content="https://kubicek-o.github.io/volebni_stranky/parlament.html" />
@@ -16,100 +16,705 @@
   <meta name="theme-color" content="#0a3069" />
 
   <style>
-    :root{ --blue:#0a3069; --accent:#ffcc00; --bg1:#eaf3ff; --bg2:#c9dcff; --text:#0a3069; }
-    *{box-sizing:border-box}
-    body{font-family:'Segoe UI',Tahoma,Arial,sans-serif;margin:0;background:linear-gradient(135deg,var(--bg1),var(--bg2));color:var(--text)}
-    header{background:var(--blue);color:#fff;text-align:center;padding:40px 16px 60px;box-shadow:0 4px 14px rgba(0,0,0,.25)}
-    h1{margin:0;font-size:2.8rem;letter-spacing:.06em;text-transform:uppercase}
-    .tagline{font-size:1.2rem;margin-top:8px;font-style:italic;color:#ffda44}
+    :root{
+      --blue:#0a3069;
+      --blue-dark:#041739;
+      --accent:#ffcc00;
+      --accent-soft:#fff3b0;
+      --bg1:#eaf3ff;
+      --bg2:#c9dcff;
+      --text:#0a3069;
+      --danger:#e63946;
+      --success:#2a9d8f;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{
+      font-family:'Segoe UI',Tahoma,Arial,sans-serif;
+      margin:0;
+      min-height:100vh;
+      background:radial-gradient(circle at top,var(--bg1) 0,var(--bg2) 45%,#a8b9ff 100%);
+      color:var(--text);
+      display:flex;
+      flex-direction:column;
+    }
 
     /* Skip link pro klávesnici */
-    .skip-link{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
-    .skip-link:focus{left:16px;top:16px;width:auto;height:auto;background:#fff;color:#000;padding:8px 12px;border-radius:8px;z-index:999}
+    .skip-link{
+      position:absolute;
+      left:-9999px;
+      top:auto;
+      width:1px;
+      height:1px;
+      overflow:hidden;
+    }
+    .skip-link:focus{
+      left:16px;
+      top:16px;
+      width:auto;
+      height:auto;
+      background:#fff;
+      color:#000;
+      padding:8px 12px;
+      border-radius:999px;
+      z-index:999;
+      box-shadow:0 4px 10px rgba(0,0,0,.25);
+    }
 
-    nav{background:#072652;display:flex;justify-content:center;gap:10px;padding:10px;position:sticky;top:0;z-index:50}
-    .nav-btn{display:inline-block;border:2px solid #fff;background:transparent;color:#fff;font-weight:700;padding:8px 14px;border-radius:12px;cursor:pointer;transition:.2s;text-decoration:none}
-    .nav-btn:hover{transform:translateY(-1px);background:rgba(255,255,255,.08)}
-    .nav-btn.active,[aria-current="page"]{background:#fff;color:#072652}
+    header{
+      background:linear-gradient(135deg,var(--blue-dark),var(--blue));
+      color:#fff;
+      text-align:center;
+      padding:36px 16px 60px;
+      box-shadow:0 4px 18px rgba(0,0,0,.35);
+      position:relative;
+      overflow:hidden;
+    }
+    header::before{
+      content:'';
+      position:absolute;
+      inset:-80px;
+      background:radial-gradient(circle at 20% 0,rgba(255,255,255,.15),transparent 60%),
+                  radial-gradient(circle at 80% 100%,rgba(255,255,255,.15),transparent 55%);
+      opacity:.9;
+      pointer-events:none;
+    }
+    .header-inner{
+      position:relative;
+      max-width:1000px;
+      margin:0 auto;
+    }
+    h1{
+      margin:0;
+      font-size:2.6rem;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      text-shadow:0 3px 9px rgba(0,0,0,.4);
+    }
+    .tagline{
+      font-size:1.1rem;
+      margin-top:10px;
+      font-style:italic;
+      color:#ffda44;
+    }
+    .badge-row{
+      margin-top:18px;
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:center;
+      gap:10px;
+    }
+    .pill{
+      border-radius:999px;
+      padding:6px 14px;
+      border:1px solid rgba(255,255,255,.4);
+      background:rgba(0,0,0,.12);
+      font-size:.9rem;
+      backdrop-filter:blur(6px);
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      color:#fefefe;
+    }
+    .pill-dot{
+      width:8px;
+      height:8px;
+      border-radius:50%;
+      background:#3ce37b;
+      box-shadow:0 0 6px rgba(60,227,123,.9);
+    }
 
-    main{max-width:1000px;margin:-40px auto 40px;background:#fff;border-radius:16px;padding:24px;box-shadow:0 6px 20px rgba(0,0,0,.15)}
-    .section-title{text-align:center;font-size:1.9rem;color:#0a3069;position:relative;margin:20px 0 16px}
-    .section-title:after{content:'';display:block;width:70px;height:3px;background:linear-gradient(90deg,var(--accent),#ffd95e);margin:8px auto;border-radius:2px}
-    .lead{font-size:1.15rem;line-height:1.6;color:#0f4d91;max-width:850px;margin:0 auto 24px;text-align:center}
-    .cards{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));margin:20px 0}
-    .card{background:#f9fbff;border:1px solid #dde6ff;border-radius:12px;padding:16px;box-shadow:0 3px 8px rgba(0,0,0,.08);transition:.15s ease}
-    .card:hover{transform:translateY(-2px);box-shadow:0 6px 14px rgba(0,0,0,.12)}
-    .poster{display:block;margin:20px auto;border-radius:16px;box-shadow:0 4px 16px rgba(0,0,0,.25);max-width:95%;height:auto}
-    footer{background:var(--blue);color:#fff;text-align:center;padding:16px;font-weight:700;border-radius:0 0 16px 16px}
+    nav{
+      background:#072652;
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:center;
+      gap:8px;
+      padding:10px;
+      position:sticky;
+      top:0;
+      z-index:50;
+      box-shadow:0 3px 10px rgba(0,0,0,.35);
+    }
+    .nav-btn{
+      display:inline-block;
+      border:1px solid rgba(255,255,255,.7);
+      background:rgba(0,0,0,.1);
+      color:#fff;
+      font-weight:600;
+      padding:7px 14px;
+      border-radius:999px;
+      cursor:pointer;
+      transition:.18s;
+      text-decoration:none;
+      font-size:.95rem;
+      position:relative;
+    }
+    .nav-btn:hover{
+      transform:translateY(-1px);
+      background:rgba(255,255,255,.12);
+      box-shadow:0 3px 8px rgba(0,0,0,.3);
+    }
+    .nav-btn.active,[aria-current="page"]{
+      background:#fff;
+      color:#072652;
+      box-shadow:0 3px 10px rgba(0,0,0,.35);
+    }
+    .nav-btn::after{
+      content:attr(data-label);
+      position:absolute;
+      left:50%;
+      top:100%;
+      transform:translate(-50%,4px);
+      font-size:.7rem;
+      color:#ffef9f;
+      opacity:0;
+      pointer-events:none;
+      transition:.18s;
+      white-space:nowrap;
+    }
+    .nav-btn.active::after{
+      opacity:1;
+      transform:translate(-50%,6px);
+    }
 
-    @media (prefers-reduced-motion: reduce){ *{animation:none !important; transition:none !important;} }
+    main{
+      max-width:1000px;
+      width:100%;
+      margin:-40px auto 30px;
+      background:#fff;
+      border-radius:18px;
+      padding:22px 20px 24px;
+      box-shadow:0 10px 26px rgba(0,0,0,.22);
+      position:relative;
+      overflow:hidden;
+    }
+    @media (min-width:768px){
+      main{padding:26px 32px 30px;}
+    }
+
+    #content.fade-in{
+      animation:fadeIn .25s ease-out;
+    }
+    @keyframes fadeIn{
+      from{opacity:0;transform:translateY(6px);} 
+      to{opacity:1;transform:translateY(0);} 
+    }
+
+    .section-title{
+      text-align:center;
+      font-size:1.9rem;
+      color:#0a3069;
+      position:relative;
+      margin:16px 0 18px;
+    }
+    .section-title span{
+      position:relative;
+      z-index:1;
+    }
+    .section-title::before{
+      content:'';
+      position:absolute;
+      left:50%;
+      top:52%;
+      transform:translate(-50%,-50%);
+      width:170px;
+      height:26px;
+      background:radial-gradient(circle at center,var(--accent-soft),transparent 70%);
+      opacity:.8;
+    }
+    .section-title::after{
+      content:'';
+      display:block;
+      width:80px;
+      height:3px;
+      background:linear-gradient(90deg,var(--accent),#ffd95e);
+      margin:8px auto 0;
+      border-radius:2px;
+    }
+
+    .lead{
+      font-size:1.08rem;
+      line-height:1.6;
+      color:#0f4d91;
+      max-width:850px;
+      margin:0 auto 20px;
+      text-align:center;
+    }
+    .lead-compact{
+      font-size:1rem;
+      margin-bottom:14px;
+    }
+
+    .chips-row{
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:center;
+      gap:8px;
+      margin:4px auto 18px;
+    }
+    .chip{
+      font-size:.8rem;
+      padding:4px 10px;
+      border-radius:999px;
+      border:1px solid #dde6ff;
+      background:#f5f7ff;
+      color:#183f87;
+      text-transform:uppercase;
+      letter-spacing:.06em;
+    }
+
+    .cards{
+      display:grid;
+      gap:14px;
+      grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+      margin:16px 0 18px;
+    }
+    .card{
+      background:#f9fbff;
+      border:1px solid #dde6ff;
+      border-radius:12px;
+      padding:14px 14px 16px;
+      box-shadow:0 3px 8px rgba(0,0,0,.08);
+      transition:.15s ease;
+      position:relative;
+      overflow:hidden;
+    }
+    .card:hover{
+      transform:translateY(-2px);
+      box-shadow:0 6px 14px rgba(0,0,0,.12);
+    }
+    .card::before{
+      content:'';
+      position:absolute;
+      inset:0;
+      background:linear-gradient(135deg,rgba(255,255,255,.45),transparent 55%);
+      opacity:0;
+      transition:.2s;
+      pointer-events:none;
+    }
+    .card:hover::before{opacity:.9;}
+    .card h3{
+      margin:0 0 6px;
+      font-size:1.05rem;
+      color:#0a3069;
+    }
+    .card p{
+      margin:0;
+      font-size:.96rem;
+      line-height:1.5;
+      color:#26436c;
+    }
+    .card ul{
+      padding-left:18px;
+      font-size:.95rem;
+      color:#26436c;
+    }
+    .card li{margin-bottom:4px;}
+
+    .stat-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      justify-content:center;
+      margin:6px 0 4px;
+    }
+    .stat{
+      min-width:130px;
+      padding:6px 10px;
+      border-radius:10px;
+      border:1px dashed #c0cff9;
+      background:#f3f6ff;
+      font-size:.85rem;
+      text-align:left;
+    }
+    .stat strong{display:block;font-size:.95rem;}
+
+    .poster{
+      display:block;
+      margin:10px auto 6px;
+      border-radius:16px;
+      box-shadow:0 6px 18px rgba(0,0,0,.35);
+      max-width:95%;
+      height:auto;
+    }
+
+    .poster-note{
+      text-align:center;
+      font-size:.85rem;
+      color:#4060a0;
+      margin-top:6px;
+    }
+
+    .timeline{
+      margin:14px 0 4px;
+      border-left:3px solid #d0d9ff;
+      padding-left:14px;
+    }
+    .milestone{
+      margin-bottom:12px;
+      position:relative;
+      padding-left:4px;
+    }
+    .milestone::before{
+      content:'';
+      position:absolute;
+      left:-18px;
+      top:4px;
+      width:11px;
+      height:11px;
+      border-radius:50%;
+      background:#fff;
+      border:3px solid var(--accent);
+      box-shadow:0 0 0 3px rgba(255,204,0,.25);
+    }
+    .milestone-title{
+      font-weight:700;
+      font-size:.95rem;
+      color:#0a3069;
+    }
+    .milestone-text{
+      font-size:.9rem;
+      color:#26436c;
+    }
+
+    .label{
+      display:inline-block;
+      font-size:.7rem;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      color:#335;
+      background:#e3edff;
+      padding:3px 7px;
+      border-radius:999px;
+      margin-bottom:4px;
+    }
+
+    .cta-box{
+      margin:12px auto 4px;
+      padding:12px 14px;
+      border-radius:12px;
+      border:1px solid #ffe38a;
+      background:#fffbea;
+      text-align:center;
+      font-size:.96rem;
+      color:#5a4100;
+    }
+    .cta-box strong{font-weight:700;}
+
+    footer{
+      background:var(--blue);
+      color:#fff;
+      text-align:center;
+      padding:14px 12px 16px;
+      font-weight:600;
+      border-radius:16px 16px 0 0;
+      font-size:.9rem;
+      margin-top:auto;
+    }
+    footer span{
+      display:inline-block;
+      margin-top:2px;
+      font-size:.85rem;
+      opacity:.9;
+    }
+
+    .key-numbers{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      justify-content:center;
+      margin:6px 0 14px;
+    }
+    .key-number{
+      min-width:140px;
+      background:#061a3f;
+      color:#fefefe;
+      border-radius:10px;
+      padding:8px 10px;
+      font-size:.9rem;
+      text-align:left;
+      border:1px solid rgba(255,255,255,.2);
+    }
+    .key-number strong{
+      display:block;
+      font-size:1.1rem;
+    }
+    .key-number span{
+      font-size:.78rem;
+      opacity:.9;
+    }
+
+    .route-hint{
+      font-size:.78rem;
+      text-align:center;
+      color:#52638d;
+      margin-top:2px;
+    }
+
+    .note-small{
+      font-size:.8rem;
+      color:#666;
+      margin-top:4px;
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      *{animation:none !important; transition:none !important;}
+    }
+
+    /* Mobilní úpravy – pohodlné čtení na výšku */
+    @media (max-width: 600px){
+      body{
+        background:#eaf3ff;
+      }
+      header{
+        padding:24px 12px 32px;
+      }
+      h1{
+        font-size:1.8rem;
+        letter-spacing:.08em;
+      }
+      .tagline{
+        font-size:.95rem;
+        padding:0 8px;
+      }
+      .badge-row{
+        margin-top:12px;
+        gap:6px;
+      }
+      .pill{
+        font-size:.8rem;
+        padding:4px 10px;
+      }
+
+      nav{
+        justify-content:flex-start;
+        overflow-x:auto;
+        padding:8px 6px;
+        -webkit-overflow-scrolling:touch;
+      }
+      nav::-webkit-scrollbar{display:none;}
+      .nav-btn{
+        flex:0 0 auto;
+        font-size:.85rem;
+        padding:6px 10px;
+        margin-right:4px;
+      }
+
+      main{
+        margin:-24px 8px 20px;
+        padding:16px 14px 18px;
+        border-radius:14px;
+      }
+
+      .section-title{
+        font-size:1.5rem;
+        margin:10px 0 12px;
+      }
+      .lead{
+        font-size:1rem;
+        margin-bottom:14px;
+      }
+      .cards{
+        grid-template-columns:1fr;
+        gap:10px;
+        margin:12px 0 14px;
+      }
+      .card{
+        padding:10px 10px 12px;
+      }
+      .card h3{
+        font-size:1rem;
+      }
+      .card p,
+      .card ul{
+        font-size:.9rem;
+      }
+
+      .key-numbers{
+        gap:8px;
+      }
+      .key-number{
+        min-width:0;
+        width:100%;
+      }
+
+      .poster{
+        max-width:100%;
+        border-radius:12px;
+      }
+
+      .route-hint{
+        font-size:.72rem;
+        margin-top:4px;
+      }
+    }
+    }
   </style>
 </head>
 <body>
   <a href="#content" class="skip-link">Přeskočit na obsah</a>
 
   <header>
-    <h1>Oskar Kubíček</h1>
-    <div class="tagline">Kandidát na předsedu školního parlamentu – Ne sliby, ale činy!</div>
+    <div class="header-inner">
+      <h1>Oskar Kubíček</h1>
+      <div class="tagline">Kandidát na předsedu školního parlamentu – Ne sliby, ale činy!</div>
+      <div class="badge-row">
+        <div class="pill"><span class="pill-dot"></span> Zápisy do 48 hodin</div>
+        <div class="pill">Online nástěnka ŠP – <strong>navrženo</strong></div>
+        <div class="pill">První viditelná změna do 30 dnů</div>
+      </div>
+    </div>
   </header>
 
   <nav aria-label="Hlavní navigace" role="navigation">
-    <a class="nav-btn" href="#/uvod" data-route="uvod">Úvod</a>
-    <a class="nav-btn" href="#/omne" data-route="omne">O mně</a>
-    <a class="nav-btn" href="#/plakat" data-route="plakat">Plakát</a>
-    <a class="nav-btn" href="#/sliby" data-route="sliby">Volební sliby</a>
-    <a class="nav-btn" href="#/plan" data-route="plan">Můj plán</a>
-    <a class="nav-btn" href="#/kontakt" data-route="kontakt">Kontakt</a>
+    <a class="nav-btn" href="#/uvod" data-route="uvod" data-label="Začít tady">Úvod</a>
+    <a class="nav-btn" href="#/omne" data-route="omne" data-label="Kdo jsem">O mně</a>
+    <a class="nav-btn" href="#/plakat" data-route="plakat" data-label="Plakát">Plakát</a>
+    <a class="nav-btn" href="#/sliby" data-route="sliby" data-label="Závazky">Volební sliby</a>
+    <a class="nav-btn" href="#/plan" data-route="plan" data-label="30 / 60 / 90">Můj plán</a>
+    <a class="nav-btn" href="#/kontakt" data-route="kontakt" data-label="Ozvi se">Kontakt</a>
   </nav>
 
   <main>
     <div id="content"></div>
+    <div class="route-hint">Tip: můžeš použít klávesy ◀︎ / ▶︎ pro přepínání mezi sekcemi.</div>
+
     <noscript>
-      <section style="padding:16px;background:#fff0e0;border-radius:12px;">
+      <section style="padding:16px;background:#fff0e0;border-radius:12px;margin-top:14px;">
         <h2>Obsah</h2>
-        <p>Vypadá to, že máš vypnutý JavaScript. Zde je rychlý přehled:</p>
+        <p>Vypadá to, že máš vypnutý JavaScript. Stránka normálně funguje jako jedna aplikace s přepínáním sekcí, ale tady je rychlý přehled toho nejdůležitějšího:</p>
         <ul>
-          <li><strong>Ne sliby, ale činy</strong> – zápisy do 48 h, online nástěnka, první změna do 30 dnů.</li>
-          <li><strong>Plán 30/60/90</strong> – Komunikace, Prostředí, Zapojení.</li>
-          <li><strong>Kontakt</strong> – O přestávkách na chodbě nebo e‑mailem.</li>
+          <li><strong>Ne sliby, ale činy</strong> – zápisy ŠP do 48 h, online nástěnka a první viditelná změna pro všechny do 30 dnů.</li>
+          <li><strong>Plán 30 / 60 / 90</strong> – pilíře Komunikace, Prostředí a Zapojení.</li>
+          <li><strong>Kontakt</strong> – osobně o přestávkách, přes třídní zástupce nebo e-mailem.</li>
         </ul>
       </section>
     </noscript>
   </main>
 
   <footer>
-    Oskar Kubíček • Kandidát na předsedu školního parlamentu • Kubíček to zařídí
+    Oskar Kubíček • Kandidát na předsedu školního parlamentu
+    <br />
+    <span>Kubíček to zařídí – ne sliby, ale činy.</span>
   </footer>
 
-  <!-- Fallback šablony: zobrazí se, když chybí soubor -->
+  <!-- Fallback šablony: použijí se, když chybí soubor uvod.html / omne.html atd. -->
   <template id="tpl-uvod">
     <section>
-      <h2 class="section-title">Úvod</h2>
-      <p class="lead">Jsem <strong>Oskar Kubíček</strong>, kandidát na <strong>předsedu školního parlamentu</strong>. Nechci jen mluvit o změnách — chci je spolu s vámi dělat.</p>
-      <div class="cards">
-        <article class="card"><h3>Proč kandiduji</h3><p>Chci z parlamentu udělat místo, kde se nápady proměňují v hotové věci.</p></article>
-        <article class="card"><h3>Co nabízím</h3><p>Naslouchání, transparentnost a dotahování věcí do konce.</p></article>
-        <article class="card"><h3>Slogan</h3><p><strong>Ne sliby, ale činy — Kubíček to zařídí.</strong></p></article>
+      <h2 class="section-title"><span>Úvod</span></h2>
+      <p class="lead">
+        Jsem <strong>Oskar Kubíček</strong>, kandidát na <strong>předsedu školního parlamentu</strong>.
+        Nechci jen mluvit o změnách – chci, aby byly <strong>vidět v reálném životě</strong>.
+      </p>
+
+      <div class="chips-row">
+        <span class="chip">Ne sliby, ale činy</span>
+        <span class="chip">Zápisy do 48 h</span>
+        <span class="chip">Online nástěnka</span>
+        <span class="chip">První změna do 30 dnů</span>
       </div>
+
+      <div class="cards">
+        <article class="card">
+          <span class="label">Proč kandiduji</span>
+          <h3>Parlament, který řeší věci – ne jen zapisuje</h3>
+          <p>Chci, aby byl školní parlament místo, kde se <strong>nápady z tříd mění v hotové věci</strong>. Nechci “povídací kroužek”, ale tým, který dotahuje úkoly do konce.</p>
+        </article>
+
+        <article class="card">
+          <span class="label">Co nabízím</span>
+          <h3>Naslouchání, transparentnost, dotahování</h3>
+          <p>Se mnou máš jistotu: <strong>co se domluví, to se zapíše</strong>, a co je v zápise, to má <strong>konkrétního člověka a termín</strong>. Čistá a přehledná komunikace mezi ŠP a třídami.</p>
+        </article>
+
+        <article class="card">
+          <span class="label">Slogan</span>
+          <h3>Ne sliby, ale činy – Kubíček to zařídí</h3>
+          <p>
+            Můj závazek je jednoduchý: <strong>jasné sliby + jasné termíny</strong>.<br/>
+            Žádné “někdy se to zkusí”. <strong>Buď se to udělá, nebo se vysvětlí proč to nejde.</strong>
+          </p>
+        </article>
+      </div>
+
       <div class="card">
-        <h3>Co už jsem zařídil</h3>
+        <span class="label">Co už je rozjeté</span>
+        <h3>Co už jsem zařídil, ještě než jsi hlasoval</h3>
         <ul>
-          <li>Domluvený pilot <strong>tematického dne</strong> s vedením.</li>
-          <li>Návrh formátu <strong>zápisů ŠP</strong> (téma → rozhodnutí → úkoly).</li>
-          <li>Připravený design <strong>online nástěnky</strong> – ukázka na vyžádání.</li>
+          <li><strong>Domluvený pilot tematického dne</strong> s vedením – první společná akce napříč ročníky.</li>
+          <li><strong>Návrh nového formátu zápisů ŠP</strong> (téma → rozhodnutí → úkoly → kdo → do kdy), aby každá třída hned viděla, co se řeší.</li>
+          <li><strong>Připravený design online nástěnky</strong> – přehled <em>navrženo → v řešení → hotovo</em>. Ukázku rád vysvětlím komukoliv osobně.</li>
         </ul>
+      </div>
+
+      <div class="key-numbers">
+        <div class="key-number">
+          <strong>48 h</strong>
+          <span>Maximální doba pro zveřejnění zápisu po schůzce ŠP.</span>
+        </div>
+        <div class="key-number">
+          <strong>30 dnů</strong>
+          <span>První viditelná změna, kterou pocítí celá škola.</span>
+        </div>
+        <div class="key-number">
+          <strong>3 pilíře</strong>
+          <span>Komunikace, Prostředí, Zapojení – základ mého plánu.</span>
+        </div>
       </div>
     </section>
   </template>
 
   <template id="tpl-omne">
     <section>
-      <h2 class="section-title">O mně</h2>
-      <p class="lead">Ahoj! Jmenuji se <strong>Oskar Kubíček</strong> a na naši školu chodím už <strong>10 let</strong>. Na Korunku chodím rád a s úsměvem. S většinou z vás jsem se už bavil a chci, aby se u nás ve škole každý cítil dobře.</p>
+      <h2 class="section-title"><span>O mně</span></h2>
+      <p class="lead">
+        Jmenuje se <strong>Oskar Kubíček</strong> a na <strong>Korunku chodím už 10 let</strong>.
+        Tuhle školu mám rád a chci, aby se tu dobře cítil každý – od prvňáků po deváťáky.
+      </p>
+
       <div class="cards">
-        <article class="card"><h3>Kdo jsem</h3><p>Otevřený a férový. Umím spojovat lidi a řešit věci v klidu.</p></article>
-        <article class="card"><h3>Co mě baví</h3><p>Technologie, weby a projekty, které mají smysl. Organizace a dobrá komunikace.</p></article>
-        <article class="card"><h3>Proč předseda</h3><p>Mám energii a plán. Chci být lídr, který dává prostor všem ročníkům.</p></article>
+        <article class="card">
+          <span class="label">Kdo jsem</span>
+          <h3>Otevřený, férový, v klidu</h3>
+          <p>Jsem člověk, který rád věci říká <strong>napřímo a bez zbytečných konfliktů</strong>. Umím spojovat lidi, hledat kompromisy a přitom držet cíl – aby se věci opravdu posunuly.</p>
+        </article>
+
+        <article class="card">
+          <span class="label">Co mě baví</span>
+          <h3>Technologie, projekty a pořádek v informacích</h3>
+          <p>Baví mě weby, organizace a projekty, které mají <strong>reálný dopad</strong>. Miluju, když jsou informace přehledné, srozumitelné a každý ví, co se děje.</p>
+        </article>
+
+        <article class="card">
+          <span class="label">Proč předseda</span>
+          <h3>Energie + plán + tým</h3>
+          <p>Nechci být “šéf”, co rozhoduje sám. Chci být <strong>lídr</strong>, který dává prostor všem ročníkům, poslouchá zástupce tříd a umí věci <strong>dotáhnout</strong>.</p>
+        </article>
+      </div>
+
+      <div class="card">
+        <span class="label">Jak pracuji</span>
+        <h3>Domluveno – zapsáno – splněno</h3>
+        <p class="lead-compact">
+          Moje základní pravidlo: <strong>Domluvíme → Zapíšeme → Dáme termín → Zkontrolujeme</strong>.
+        </p>
+        <div class="stat-row">
+          <div class="stat">
+            <strong>Domluveno</strong>
+            Co se řekne na ŠP, neskončí “ve vzduchu”.
+          </div>
+          <div class="stat">
+            <strong>Zapsáno</strong>
+            Zápis do 48 h, srozumitelný pro všechny třídy.
+          </div>
+          <div class="stat">
+            <strong>Splněno</strong>
+            Online nástěnka ukáže, co se děje a co je hotové.
+          </div>
+        </div>
+        <p class="note-small">
+          Každý nápad beru vážně – i malá věc může změnit atmosféru ve škole.
+        </p>
       </div>
     </section>
   </template>
@@ -117,88 +722,356 @@
   <template id="tpl-plakat">
     <section>
       <!-- POUZE plakát, bez dalších textů -->
-      <img class="poster" src="https://raw.githubusercontent.com/kubicek-O/volebni_stranky/main/volebni-plakat.png" alt="Volební plakát Oskar Kubíček" loading="lazy" width="1200" height="1700" />
+      <img class="poster" src="https://raw.githubusercontent.com/kubicek-O/volebni_stranky/main/volebni-plakat.png" alt="Volební plakát Oskara Kubíčka – kandidát na předsedu školního parlamentu" loading="lazy" width="1200" height="1700" />
+      <p class="poster-note">Tento plakát uvidíš i ve škole – je to stejný návrh, podle kterého běží tato kampaň.</p>
     </section>
   </template>
 
   <template id="tpl-sliby">
     <section>
-      <h2 class="section-title">Volební sliby</h2>
-      <p class="lead">Sliby beru jako <strong>závazky</strong>. Tohle jsou moje priority po zvolení předsedou ŠP.</p>
-      <div class="cards">
-        <article class="card"><h3>Transparentnost</h3><p>Po každé schůzce jasné shrnutí pro třídy do 48 hodin (rozhodnutí / úkol / odpovědnost / termín).</p></article>
-        <article class="card"><h3>Online nástěnka</h3><p>Veřejný přehled úkolů: navrženo → v řešení → hotovo.</p></article>
-        <article class="card"><h3>První změna do 30 dnů</h3><p>Viditelný krok, který pocítí všichni (malé, ale konkrétní zlepšení).</p></article>
+      <h2 class="section-title"><span>Volební sliby</span></h2>
+      <p class="lead">
+        Sliby beru jako <strong>závazky</strong>. Tohle jsou tři hlavní věci, které udělám po zvolení
+        <strong>předsedou ŠP</strong>.
+      </p>
+
+      <div class="chips-row">
+        <span class="chip">Transparentní zápisy</span>
+        <span class="chip">Online nástěnka</span>
+        <span class="chip">Do 30 dnů viditelná změna</span>
       </div>
-      <p class="lead"><strong>Co slíbím – to plním.</strong></p>
+
+      <div class="cards">
+        <article class="card">
+          <span class="label">Slib č. 1</span>
+          <h3>Transparentnost – zápisy do 48 hodin</h3>
+          <p>
+            Po každé schůzce ŠP bude <strong>jasné shrnutí pro třídy do 48 hodin</strong>.
+            Žádné “nevíme, co se řešilo”.<br/>
+            Zápis bude mít strukturu:
+          </p>
+          <ul>
+            <li><strong>Téma</strong> – co se řešilo</li>
+            <li><strong>Rozhodnutí</strong> – na čem jsme se shodli</li>
+            <li><strong>Úkol</strong> – co se má stát</li>
+            <li><strong>Odpovědnost</strong> – kdo to má na starost</li>
+            <li><strong>Termín</strong> – do kdy</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <span class="label">Slib č. 2</span>
+          <h3>Online nástěnka ŠP – všichni vidí, co se děje</h3>
+          <p>
+            Zavedu <strong>veřejnou online nástěnku</strong>, kde bude přehled toho, co parlament řeší:
+            <em>navrženo → v řešení → hotovo</em>. <br/>
+            Dáš podnět? Uvidíš, jestli se jím ŠP zabývá a jak to pokračuje.
+          </p>
+        </article>
+
+        <article class="card">
+          <span class="label">Slib č. 3</span>
+          <h3>První viditelná změna do 30 dnů</h3>
+          <p>
+            Do <strong>30 dnů od zvolení</strong> chci, aby každý ve škole poznal, že parlament
+            <strong>fakt funguje</strong>. <br/>
+            Nepůjde o obří projekt, ale o <strong>konkrétní, malou a viditelnou změnu</strong>,
+            která ukáže: “OK, tady se opravdu něco děje.”
+          </p>
+        </article>
+      </div>
+
+      <div class="cta-box">
+        <strong>Co slíbím – to plním.</strong><br/>
+        Když něco nepůjde, dostaneš <strong>jasné vysvětlení proč</strong> a co zkusíme místo toho.
+      </div>
     </section>
   </template>
 
   <template id="tpl-plan">
     <section>
-      <h2 class="section-title">Můj plán</h2>
-      <p class="lead">Tři pilíře: <strong>Komunikace</strong>, <strong>Prostředí</strong> a <strong>Zapojení</strong>. Rozpis na <strong>30 / 60 / 90</strong> dní.</p>
+      <h2 class="section-title"><span>Můj plán 30 / 60 / 90</span></h2>
+      <p class="lead">
+        Můj plán stojí na třech pilířích: <strong>Komunikace</strong>, <strong>Prostředí</strong> a <strong>Zapojení</strong>.
+        Všechno je rozdělené do kroků na <strong>30 / 60 / 90 dnů</strong>, aby bylo pořád jasné, kde zrovna jsme.
+      </p>
+
       <div class="cards">
-        <article class="card"><h3>Komunikace</h3><p>Formát zápisu (téma → rozhodnutí → úkoly). Shrnutí do 48 h.</p></article>
-        <article class="card"><h3>Prostředí</h3><p>Online nástěnka ŠP + 1–2 drobná vylepšení, která jdou rychle.</p></article>
-        <article class="card"><h3>Zapojení</h3><p>Možnost pro každého dát podnět; společné akce napříč ročníky.</p></article>
+        <article class="card">
+          <span class="label">Pilíř 1</span>
+          <h3>Komunikace</h3>
+          <p>
+            Přehledné zápisy, jasné shrnutí pro třídy a minimum “překladů po cestě”.
+          </p>
+          <ul>
+            <li>Formát zápisu: <em>téma → rozhodnutí → úkoly → kdo → do kdy</em>.</li>
+            <li>Shrnutí do 48 h po každé schůzce ŠP.</li>
+            <li>Jasně rozdělené, co je <em>informace</em> a co je <em>úkol</em>.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <span class="label">Pilíř 2</span>
+          <h3>Prostředí</h3>
+          <p>
+            Škola, kde je vidět, že se něco děje – i když je to “jen” drobnost.
+          </p>
+          <ul>
+            <li>Online nástěnka ŠP s přehledem úkolů.</li>
+            <li>1–2 drobná vylepšení, která jdou udělat rychle, ale mají dopad.</li>
+            <li>Spolupráce s vedením na konkrétních změnách.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <span class="label">Pilíř 3</span>
+          <h3>Zapojení</h3>
+          <p>
+            Každý má možnost něco navrhnout a vědět, jak to dopadlo.
+          </p>
+          <ul>
+            <li>Jednoduchý způsob, jak dát podnět (přes zástupce, osobně nebo on-line).</li>
+            <li>Akce napříč ročníky – nejen “devítky rozhodnou, mladší koukají”.</li>
+            <li>Pravidelné vyhodnocení, co funguje a co upravíme.</li>
+          </ul>
+        </article>
       </div>
-      <div class="cards">
-        <article class="card"><h3>Do 30 dnů</h3><p>Zápisy, online nástěnka, první malá změna.</p></article>
-        <article class="card"><h3>Do 60 dnů</h3><p>Tematický den + veřejný kalendář ŠP.</p></article>
-        <article class="card"><h3>Do 90 dnů</h3><p>Vyhodnocení podnětů a plán dalšího čtvrtletí.</p></article>
+
+      <div class="timeline">
+        <div class="milestone">
+          <div class="milestone-title">Do 30 dnů od zvolení</div>
+          <div class="milestone-text">
+            <ul>
+              <li>Spuštění <strong>nového formátu zápisů</strong> ŠP.</li>
+              <li>První verze <strong>online nástěnky</strong> ŠP.</li>
+              <li><strong>První malá viditelná změna</strong>, kterou pozná celá škola.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="milestone">
+          <div class="milestone-title">Do 60 dnů</div>
+          <div class="milestone-text">
+            <ul>
+              <li>Realizace <strong>tematického dne</strong> (pilot) ve spolupráci s vedením.</li>
+              <li>Veřejný <strong>kalendář ŠP</strong> – co se chystá, kdy jsou schůzky.</li>
+              <li>Doladění nástěnky podle zpětné vazby od tříd.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="milestone">
+          <div class="milestone-title">Do 90 dnů</div>
+          <div class="milestone-text">
+            <ul>
+              <li><strong>Vyhodnocení podnětů</strong> – co se povedlo a co nás čeká dál.</li>
+              <li>Plán dalšího čtvrtletí – jasně napsaný a dostupný pro všechny.</li>
+              <li>Ještě lepší propojení tříd a ŠP – žádné “my” a “oni”, ale jeden tým.</li>
+            </ul>
+          </div>
+        </div>
       </div>
     </section>
   </template>
 
   <template id="tpl-kontakt">
     <section>
-      <h2 class="section-title">Kontakt</h2>
-      <p class="lead">Chceš něco zlepšit? Řekni mi to. Jsem kandidát na předsedu ŠP a počítám s tvým hlasem i nápady.</p>
+      <h2 class="section-title"><span>Kontakt</span></h2>
+      <p class="lead">
+        Máš nápad, co zlepšit? Něco tě štve? <strong>Řekni mi to.</strong><br/>
+        Počítám nejen s tvým hlasem, ale hlavně s tvými <strong>nápady</strong>.
+      </p>
+
       <div class="cards">
-        <article class="card"><h3>Osobně</h3><p>O přestávkách na chodbě – stačí mě zastavit.</p></article>
-        <article class="card"><h3>Přes zástupce</h3><p>Dej návrh svému třídnímu zástupci do ŠP – dostane odpověď.</p></article>
-        <article class="card"><h3>Napiš mi</h3><p><a href="mailto:oskar.kubicek@example.com">oskar.kubicek@example.com</a> (nahraď vlastním e‑mailem)</p></article>
+        <article class="card">
+          <span class="label">Nejpřímější cesta</span>
+          <h3>Osobně o přestávkách</h3>
+          <p>Vidíš mě na chodbě? <strong>Zastav mě.</strong> Můžeš říct svůj nápad, připomínku nebo jen “hele, tohle by šlo udělat líp”.</p>
+        </article>
+
+        <article class="card">
+          <span class="label">Přes zástupce</span>
+          <h3>Přes svého třídního zástupce v ŠP</h3>
+          <p>Řekni svůj návrh <strongzástupci třídy v parlamentu</strong>. Postarám se o to, aby dostal <strong>odpověď</strong> a informace se vrátily zpátky k celé třídě.</p>
+        </article>
+
+        <article class="card">
+          <span class="label">Napiš mi</span>
+          <h3>E-mail</h3>
+          <p>
+            <a href="mailto:oskar.kubicek@example.com">oskar.kubicek@example.com</a><br/>
+            <span class="note-small">(nahraď vlastním e-mailem, který chceš pro kampaň použít)</span>
+          </p>
+        </article>
+      </div>
+
+      <div class="cta-box">
+        <strong>Tvůj hlas má váhu.</strong><br/>
+        S tvou pomocí může být školní parlament místo, kde se <strong>věci opravdu dějí</strong>.
       </div>
     </section>
   </template>
 
   <script>
     (function(){
-      // Dynamické načítání podstránek. Pokud soubor chybí, použije se fallback šablona.
-      const routes = { uvod:'uvod.html', omne:'omne.html', plakat:'plakat.html', sliby:'sliby.html', plan:'plan.html', kontakt:'kontakt.html' };
+      // Definice tras – stejně jako předtím, zachováváme důležité chování
+      const routes = {
+        uvod:   'uvod.html',
+        omne:   'omne.html',
+        plakat: 'plakat.html',
+        sliby:  'sliby.html',
+        plan:   'plan.html',
+        kontakt:'kontakt.html'
+      };
+
+      const routeTitles = {
+        uvod:   'Úvod',
+        omne:   'O mně',
+        plakat: 'Plakát',
+        sliby:  'Volební sliby',
+        plan:   'Můj plán',
+        kontakt:'Kontakt'
+      };
+
       const cache = new Map();
       const contentEl = document.getElementById('content');
+      const navLinks = document.querySelectorAll('.nav-btn');
+      const baseTitle = document.title;
 
       function setActive(route){
-        document.querySelectorAll('.nav-btn').forEach(a=>{
-          const active = a.dataset.route===route;
+        navLinks.forEach(a=>{
+          const active = a.dataset.route === route;
           a.classList.toggle('active', active);
-          if(active){ a.setAttribute('aria-current','page'); }
-          else{ a.removeAttribute('aria-current'); }
+          if(active){
+            a.setAttribute('aria-current','page');
+          }else{
+            a.removeAttribute('aria-current');
+          }
         });
       }
-      function showLoading(){ contentEl.innerHTML='<p style="text-align:center;padding:20px;">Načítám obsah…</p>'; }
-      function fallbackFromTemplate(route){ const tpl=document.getElementById('tpl-'+route); if(tpl){ contentEl.innerHTML=tpl.innerHTML; return true;} return false; }
 
-      async function loadRoute(route){
-        if(!(route in routes)){route='uvod';}
-        setActive(route); showLoading();
-        const url=routes[route];
-        try{
-          if(cache.has(url)){contentEl.innerHTML=cache.get(url);return;}
-          const res=await fetch(url,{headers:{'X-Requested-With':'fetch'}});
-          if(!res.ok) throw new Error('HTTP '+res.status);
-          const html=await res.text(); cache.set(url,html); contentEl.innerHTML=html;
-        }catch(err){ if(!fallbackFromTemplate(route)){ contentEl.innerHTML='<p style="color:red;text-align:center">Chyba načítání ('+err.message+')</p>'; }}
+      function showLoading(){
+        contentEl.classList.remove('fade-in');
+        contentEl.innerHTML = '<p style="text-align:center;padding:20px;">Načítám obsah…</p>';
       }
 
-      function currentFromHash(){ const m=location.hash.match(/^#\/?(uvod|omne|plakat|sliby|plan|kontakt)$/); return m?m[1]:'uvod'; }
-      window.addEventListener('hashchange',()=>loadRoute(currentFromHash()));
-      document.querySelectorAll('.nav-btn').forEach(link=>link.addEventListener('click',()=>{
-        const r=link.dataset.route;
-        if(location.hash!=='#/'+r){location.hash='#/'+r;}else{loadRoute(r);} // klik na aktivní odkaz refreshne obsah
-      }));
+      function fallbackFromTemplate(route){
+        const tpl = document.getElementById('tpl-'+route);
+        if(tpl){
+          contentEl.innerHTML = tpl.innerHTML;
+          requestAnimationFrame(()=>contentEl.classList.add('fade-in'));
+          return true;
+        }
+        return false;
+      }
+
+      async function loadRoute(route){
+        if(!(route in routes)){
+          route = 'uvod';
+        }
+        // uložit poslední zobrazenou stránku
+        try{
+          localStorage.setItem('sp_last_route', route);
+        }catch(e){}
+
+        setActive(route);
+        showLoading();
+        const url = routes[route];
+
+        // aktualizace titulku stránky
+        const rt = routeTitles[route] || '';
+        document.title = rt ? baseTitle + ' – ' + rt : baseTitle;
+
+        try{
+          if(cache.has(url)){
+            contentEl.innerHTML = cache.get(url);
+            requestAnimationFrame(()=>contentEl.classList.add('fade-in'));
+            return;
+          }
+          const res = await fetch(url,{headers:{'X-Requested-With':'fetch'}});
+          if(!res.ok) throw new Error('HTTP '+res.status);
+          const html = await res.text();
+          cache.set(url, html);
+          contentEl.innerHTML = html;
+          requestAnimationFrame(()=>contentEl.classList.add('fade-in'));
+        }catch(err){
+          if(!fallbackFromTemplate(route)){
+            contentEl.innerHTML = '<p style="color:red;text-align:center;padding:20px;">Chyba načítání obsahu ('+err.message+')</p>';
+          }
+        }
+
+        // po přepnutí stránky skočit na vršek hlavního obsahu
+        if(typeof contentEl.scrollIntoView === 'function'){
+          contentEl.scrollIntoView({behavior:'smooth',block:'start'});
+        }
+      }
+
+      function validRouteFromHash(hash){
+        const m = hash.match(/^#\/?(uvod|omne|plakat|sliby|plan|kontakt)$/);
+        if(m && m[1]) return m[1];
+        return null;
+      }
+
+      function currentFromHash(){
+        const r = validRouteFromHash(location.hash);
+        if(r) return r;
+
+        // pokud není v URL hash, zkusíme poslední navštívenou stránku
+        let last = null;
+        try{
+          last = localStorage.getItem('sp_last_route');
+        }catch(e){}
+        if(last && routes[last]){
+          return last;
+        }
+
+        // výchozí fallback
+        if(location.hash !== '#/uvod'){
+          location.hash = '#/uvod';
+        }
+        return 'uvod';
+      }
+
+      window.addEventListener('hashchange',()=>{
+        loadRoute(currentFromHash());
+      });
+
+      navLinks.forEach(link=>{
+        link.addEventListener('click',()=>{
+          const r = link.dataset.route;
+          const targetHash = '#/'+r;
+          if(location.hash !== targetHash){
+            location.hash = targetHash;
+          }else{
+            // klik na aktivní odkaz refreshne obsah
+            loadRoute(r);
+          }
+        });
+      });
+
+      // Keyboard navigace mezi záložkami (šipky vlevo/vpravo)
+      document.addEventListener('keydown',e=>{
+        if(e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
+        const order = ['uvod','omne','plakat','sliby','plan','kontakt'];
+        const current = currentFromHash();
+        const idx = order.indexOf(current);
+        if(idx === -1) return;
+        let nextIdx = idx;
+        if(e.key === 'ArrowLeft'){
+          nextIdx = (idx - 1 + order.length) % order.length;
+        }else if(e.key === 'ArrowRight'){
+          nextIdx = (idx + 1) % order.length;
+        }
+        const targetRoute = order[nextIdx];
+        const targetHash = '#/'+targetRoute;
+        if(location.hash !== targetHash){
+          location.hash = targetHash;
+        }else{
+          loadRoute(targetRoute);
+        }
+      });
+
+      // inicializace
       loadRoute(currentFromHash());
     })();
   </script>
