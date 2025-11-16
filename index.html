@@ -96,6 +96,10 @@
       font-style:italic;
       color:#ffda44;
     }
+    .tagline-slogan{
+      font-weight:700;
+      white-space:nowrap;
+    }
     .badge-row{
       margin-top:18px;
       display:flex;
@@ -158,19 +162,6 @@
       background:#fff;
       color:#072652;
       box-shadow:0 3px 10px rgba(0,0,0,.35);
-    }
-    .nav-btn::after{
-      content:attr(data-label);
-      position:absolute;
-      left:50%;
-      top:100%;
-      transform:translate(-50%,4px);
-      font-size:.7rem;
-      color:#ffef9f;
-      opacity:0;
-      pointer-events:none;
-      transition:.18s;
-      white-space:nowrap;
     }
     .nav-btn.active::after{
       opacity:1;
@@ -477,6 +468,9 @@
         font-size:.95rem;
         padding:0 8px;
       }
+      .tagline-slogan{
+        white-space:nowrap;
+      }
       .badge-row{
         margin-top:12px;
         gap:6px;
@@ -548,31 +542,28 @@
         margin-top:4px;
       }
     }
-    }
   </style>
 </head>
 <body>
   <a href="#content" class="skip-link">Přeskočit na obsah</a>
 
-  <header>
+    <header>
     <div class="header-inner">
       <h1>Oskar Kubíček</h1>
-      <div class="tagline">Kandidát na předsedu školního parlamentu – Ne sliby, ale činy!</div>
-      <div class="badge-row">
-        <div class="pill"><span class="pill-dot"></span> Zápisy do 48 hodin</div>
-        <div class="pill">Online nástěnka ŠP – <strong>navrženo</strong></div>
-        <div class="pill">První viditelná změna do 30 dnů</div>
+      <div class="tagline">
+        Kandidát na předsedu školního parlamentu –
+        <span class="tagline-slogan">Ne sliby, ale činy!</span>
       </div>
     </div>
   </header>
 
   <nav aria-label="Hlavní navigace" role="navigation">
-    <a class="nav-btn" href="#/uvod" data-route="uvod" data-label="Začít tady">Úvod</a>
-    <a class="nav-btn" href="#/omne" data-route="omne" data-label="Kdo jsem">O mně</a>
-    <a class="nav-btn" href="#/plakat" data-route="plakat" data-label="Plakát">Plakát</a>
-    <a class="nav-btn" href="#/sliby" data-route="sliby" data-label="Závazky">Volební sliby</a>
-    <a class="nav-btn" href="#/plan" data-route="plan" data-label="30 / 60 / 90">Můj plán</a>
-    <a class="nav-btn" href="#/kontakt" data-route="kontakt" data-label="Ozvi se">Kontakt</a>
+    <a class="nav-btn" href="#/uvod" data-route="uvod">Úvod</a>
+    <a class="nav-btn" href="#/omne" data-route="omne">O mně</a>
+    
+    <a class="nav-btn" href="#/sliby" data-route="sliby">Volební sliby</a>
+    <a class="nav-btn" href="#/plan" data-route="plan">Můj plán</a>
+    <a class="nav-btn" href="#/kontakt" data-route="kontakt">Kontakt</a>
   </nav>
 
   <main>
@@ -668,7 +659,7 @@
     <section>
       <h2 class="section-title"><span>O mně</span></h2>
       <p class="lead">
-        Jmenuje se <strong>Oskar Kubíček</strong> a na <strong>Korunku chodím už 10 let</strong>.
+        Jmenuji se <strong>Oskar Kubíček</strong> a na <strong>Korunku chodím už 10 let</strong>.
         Tuhle školu mám rád a chci, aby se tu dobře cítil každý – od prvňáků po deváťáky.
       </p>
 
@@ -719,13 +710,7 @@
     </section>
   </template>
 
-  <template id="tpl-plakat">
-    <section>
-      <!-- POUZE plakát, bez dalších textů -->
-      <img class="poster" src="https://raw.githubusercontent.com/kubicek-O/volebni_stranky/main/volebni-plakat.png" alt="Volební plakát Oskara Kubíčka – kandidát na předsedu školního parlamentu" loading="lazy" width="1200" height="1700" />
-      <p class="poster-note">Tento plakát uvidíš i ve škole – je to stejný návrh, podle kterého běží tato kampaň.</p>
-    </section>
-  </template>
+  
 
   <template id="tpl-sliby">
     <section>
@@ -892,15 +877,14 @@
         <article class="card">
           <span class="label">Přes zástupce</span>
           <h3>Přes svého třídního zástupce v ŠP</h3>
-          <p>Řekni svůj návrh <strongzástupci třídy v parlamentu</strong>. Postarám se o to, aby dostal <strong>odpověď</strong> a informace se vrátily zpátky k celé třídě.</p>
+          <p>Řekni svůj návrh <strong>zástupci třídy v parlamentu</strong>. Postarám se o to, aby dostal <strong>odpověď</strong> a informace se vrátily zpátky k celé třídě.</p>
         </article>
 
         <article class="card">
           <span class="label">Napiš mi</span>
           <h3>E-mail</h3>
           <p>
-            <a href="mailto:oskar.kubicek@example.com">oskar.kubicek@example.com</a><br/>
-            <span class="note-small">(nahraď vlastním e-mailem, který chceš pro kampaň použít)</span>
+            <a href="mailto:z.kubosk@korunka.org">mail</a><br/>
           </p>
         </article>
       </div>
@@ -918,7 +902,6 @@
       const routes = {
         uvod:   'uvod.html',
         omne:   'omne.html',
-        plakat: 'plakat.html',
         sliby:  'sliby.html',
         plan:   'plan.html',
         kontakt:'kontakt.html'
@@ -927,7 +910,6 @@
       const routeTitles = {
         uvod:   'Úvod',
         omne:   'O mně',
-        plakat: 'Plakát',
         sliby:  'Volební sliby',
         plan:   'Můj plán',
         kontakt:'Kontakt'
@@ -1007,7 +989,7 @@
       }
 
       function validRouteFromHash(hash){
-        const m = hash.match(/^#\/?(uvod|omne|plakat|sliby|plan|kontakt)$/);
+        const m = hash.match(/^#\/?(uvod|omne|sliby|plan|kontakt)$/);
         if(m && m[1]) return m[1];
         return null;
       }
@@ -1052,7 +1034,7 @@
       // Keyboard navigace mezi záložkami (šipky vlevo/vpravo)
       document.addEventListener('keydown',e=>{
         if(e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
-        const order = ['uvod','omne','plakat','sliby','plan','kontakt'];
+        const order = ['uvod','omne','sliby','plan','kontakt'];
         const current = currentFromHash();
         const idx = order.indexOf(current);
         if(idx === -1) return;
